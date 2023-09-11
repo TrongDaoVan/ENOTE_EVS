@@ -1,0 +1,134 @@
+﻿@using System.Web
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model DemoBaoCao.Models.Contracts
+@{
+    ViewBag.Title = "EditContract";
+}
+
+<h1 style="width: 100%;
+           padding: 6px;
+           font-size: 17px;
+           background-color: #4C2683;
+           background-image: linear-gradient(#4C2683, #E44298) !important;
+           font-style: normal;
+           font-weight: 700;
+           color: #fff;
+           border-radius: 5px;
+           text-transform: uppercase;
+           text-align: center;
+           margin-bottom: 1em;">
+    Sửa Thông Tin Hợp Đồng
+</h1>
+
+
+<div class="container">
+    <form asp-action="EditContract" asp-controller="Contract" method="post">
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContractId,"Số thứ tự", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContractId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContractId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContractValue,"Giá trị hợp đồng", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContractValue, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContractValue, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContractAmountWithdrawn,"Số tiền đã rút", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContractAmountWithdrawn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContractAmountWithdrawn, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContractRemainingAmount,"Số tiền còn lại", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContractRemainingAmount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContractRemainingAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContractBorrowedDate,"Ngày vay", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContractBorrowedDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContractBorrowedDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContractNumberOfDays,"Số ngày", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContractNumberOfDays, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContractNumberOfDays, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContractEffectiveDate,"Ngày hiệu lực", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContractEffectiveDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContractEffectiveDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContractPaymentDate,"Ngày tất toán", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContractPaymentDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContractPaymentDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClientId,"Số thứ tự khách hàng", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ClientId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductId,"Số thứ tự sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-primary btn-sm" />
+            </div>
+        </div>
+    </form>
+
+
+<a href="@Url.Action("AllContract", "Contract")" class="btn btn-warning btn-sm">Quay lại danh sách</a>
+</div>
+
+
+@*đây là số thứ tự được in ra nhưng ko thể đổi dc 
+<div class="form-group">
+    @Html.LabelFor(model => model.ContractId,"Số thứ tự", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        <span class="form-control">@Model.ContractId</span>
+        @Html.ValidationMessageFor(model => model.ContractId, "", new { @class = "text-danger" })
+    </div>
+</div>*@

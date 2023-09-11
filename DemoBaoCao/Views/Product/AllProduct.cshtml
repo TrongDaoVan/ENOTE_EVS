@@ -1,0 +1,102 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <!-- thư viện thêm icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+@model IEnumerable<DemoBaoCao.Models.Products>
+
+<h1 style="width: 100%;
+           padding: 6px;
+           font-size: 17px;
+           background-color: #4C2683;
+           background-image: linear-gradient(#4C2683, #E44298) !important;
+           font-style: normal;
+           font-weight: 700;
+           color: #fff;
+           border-radius: 5px;
+           text-transform: uppercase;
+           text-align: center;
+           margin-bottom: 1em;">
+    Danh Sách Sản Phẩm
+    </h1>
+
+
+<div class="container mt-5">
+    <form asp-action="AllProduct" asp-controller="Product" method="get">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Nhập Tên Sản Phẩm" name="ProductName">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary btn-block">Tìm kiếm</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<a href="AddProduct" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i><span>Thêm</span></a>
+<table border="1" class="table table-hover">
+    <thead>
+        <tr style="border: 1px solid black;">
+            <th style="border: 1px solid black;">STT</th>
+            <th style="border: 1px solid black;">Tên sản phẩm</th>
+            <th style="border: 1px solid black;">Ngày hiệu lực </th>
+            <th style="border: 1px solid black;">Ngày kết thúc</th>
+            <th style="border: 1px solid black;">Ngày gửi tối thiểu</th>
+            <th style="border: 1px solid black;">Ngày gửi tối đa</th>
+            <th style="border: 1px solid black;">Hạn mức tối thiểu</th>
+            <th style="border: 1px solid black;">Tổng hạn mức</th>
+            <th style="border: 1px solid black;">Hạn mức còn lại</th>
+            <th style="border: 1px solid black;">Lãi xuất không kì hạn</th>
+            <th style="border: 1px solid black;">Hành Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr style="border: 1px solid black;">
+                    <td style="border: 1px solid black;text-align: center;">@item.ProductId</td>
+                    <td style="border: 1px solid black;">@item.ProductName</td>
+                    <td style="border: 1px solid black;">@item.ProductEffectiveDateFrom.ToString("dd/MM/yyyy")</td>
+                    <td style="border: 1px solid black;">@item.ProductEffectiveDateTo.ToString("dd/MM/yyyy")</td>
+                    <td style="border: 1px solid black;">@item.ProductMinimumSendingDate</td>
+                    <td style="border: 1px solid black;">@item.ProductMaximumSendingDate</td>
+                    <td style="border: 1px solid black;"> @string.Format("{0:N0}", @item.ProductPackageMinimumAmount)</td>
+                    <td style="border: 1px solid black;"> @string.Format("{0:N0}", @item.ProductPackageMaximumAmount)</td>
+                    <td style="border: 1px solid black;"> @string.Format("{0:N0}", @item.ProductTotalRemainingLimit)</td>
+                    <td style="border: 1px solid black;">@String.Format("{0:0.##}", item.ProductNonTermRate)%</td>
+                    <td style="border: 1px solid black;text-align: center;">
+                        <a asp-controller="Product" asp-action="EditProduct" asp-route-Id="@item.ProductId"> <i class="fas fa-cog" style="color: black;"></i></a>
+                        <a asp-controller="Product" asp-action="DeleteProduct" asp-route-Id="@item.ProductId"> <i class="fas fa-trash" style="color: black;"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+@*thẻ diev là phân trang*@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            Page @(ViewBag.Page) of @ViewBag.TotalPages
+            @if (ViewBag.Page > 1)
+            {
+                <a asp-action="AllProduct" asp-route-page="1" class="btn btn-secondary btn-sm">Trang đầu</a>
+                <a asp-action="AllProduct" asp-route-page="@(ViewBag.Page - 1)" class="btn btn-secondary btn-sm">Quay lại</a>
+            }
+            @if (ViewBag.Page < ViewBag.TotalPages)
+            {
+                <a asp-action="AllProduct" asp-route-page="@(ViewBag.Page + 1)" class="btn btn-secondary btn-sm">Trang tiếp</a>
+                <a asp-action="AllProduct" asp-route-page="@ViewBag.TotalPages" class="btn btn-secondary btn-sm">Trang cuối</a>
+            }
+        </div>
+    </div>
+</div>

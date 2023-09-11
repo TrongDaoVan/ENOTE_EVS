@@ -1,0 +1,131 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@model DemoBaoCao.Models.Contracts
+
+<table class="table" border="1">
+    <tr>
+        <th>Số hợp đồng</th>
+        <td>
+            @Html.EditorFor(model => model.ContractCode, new { htmlAttributes = new { @class = "form-control text-danger", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ContractCode, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Mã khách hàng</th>
+        <td>
+            @Html.EditorFor(model => model.ClientCode, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ClientCode, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Tên khách hàng</th>
+        <td>
+            @Html.EditorFor(model => model.ClientName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ClientName, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Số căn cước công dân</th>
+        <td>
+            @Html.EditorFor(model => model.ClientIdNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ClientIdNumber, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Số điện thoại</th>
+        <td>
+            @Html.EditorFor(model => model.ClientSMSNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ClientSMSNumber, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Gmail</th>
+        <td>
+            @Html.EditorFor(model => model.ClientEmail, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ClientEmail, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Địa chỉ khách hàng</th>
+        <td>
+            @Html.EditorFor(model => model.ClientAddress, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ClientAddress, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Tên sản phẩm</th>
+        <td>
+            @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Tổng hạn mức</th>
+        <td>
+            @Html.EditorFor(model => model.ProductPackageMaximumAmount, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ProductPackageMaximumAmount, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Hạn mức còn lại</th>
+        <td>
+            @Html.EditorFor(model => model.ProductTotalRemainingLimit, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ProductTotalRemainingLimit, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Lãi xuất</th>
+        <td>
+            @Html.EditorFor(model => model.ProductNonTermRate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ProductNonTermRate , "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Số tiền</th>
+        <td>
+            @Html.EditorFor(model => model.ContractValue, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ContractValue, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Số tiền đã rút</th>
+        <td>
+            @Html.EditorFor(model => model.ContractAmountWithdrawn, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ContractAmountWithdrawn, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Số tiền còn lại</th>
+        <td>
+            @Html.EditorFor(model => model.ContractRemainingAmount, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ContractRemainingAmount, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>ngày vay</th>
+        <td>
+            @Html.EditorFor(model => model.ContractBorrowedDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ContractBorrowedDate, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Số ngày hợp đồng</th>
+        <td>
+            @Html.EditorFor(model => model.ContractNumberOfDays, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ContractNumberOfDays, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <th>Ngày tất toán</th>
+        <td>
+            @Html.EditorFor(model => model.ContractPaymentDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ContractPaymentDate, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+</table>
+

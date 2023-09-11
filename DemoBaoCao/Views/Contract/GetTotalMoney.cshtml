@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <table class="table" border="1">
+        <tr>
+            <th>Tổng tiền lãi nhận được :</th>
+            <td>
+                @string.Format("{0:N0} VND", Math.Round(ViewBag.TotalMoney, 0)) <!-- Làm tròn giá trị đến 0 chữ số thập phân -->
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

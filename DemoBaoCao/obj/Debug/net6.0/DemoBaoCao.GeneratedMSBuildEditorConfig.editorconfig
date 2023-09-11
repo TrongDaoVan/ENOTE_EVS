@@ -1,0 +1,113 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DemoBaoCao
+build_property.RootNamespace = DemoBaoCao
+build_property.ProjectDir = E:\thang2\DemoBaoCao\DemoBaoCao\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\thang2\DemoBaoCao\DemoBaoCao
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Access/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXENoYW5nZVBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Access/ChangePin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXENoYW5nZVBpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Access/CheckEmailAndPin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXENoZWNrRW1haWxBbmRQaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Access/EditPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXEVkaXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Access/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Access/NewAccount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXE5ld0FjY291bnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Client/AddClient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XEFkZENsaWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Client/AllClient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XEFsbENsaWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Client/EditClient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XEVkaXRDbGllbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Contract/AddContract.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RcQWRkQ29udHJhY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Contract/AllContract.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RcQWxsQ29udHJhY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Contract/ChiTietHD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RcQ2hpVGlldEhELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Contract/EditContract.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RcRWRpdENvbnRyYWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Contract/GetTotalMoney.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RcR2V0VG90YWxNb25leS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Product/AddProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBZGRQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Product/AllProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBbGxQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Product/EditProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxFZGl0UHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/thang2/DemoBaoCao/DemoBaoCao/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-skaj4vdovn

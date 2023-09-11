@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Check Email and Pin";
+    Layout = null;
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+@if (ViewData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger mt-3">@ViewData["ErrorMessage"]</div>
+}
+
+
+<form method="post" asp-action="CheckEmailAndPin" asp-controller="Access">
+    <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
+        <table style="width: 300px; border-collapse: collapse; border: 1px solid #ccc;">
+            <tr>
+                <td colspan="2" style="text-align: center; padding: 10px; background-color: #f8f9fa;">
+                    <h2 style="width: 100%;
+                               padding: 6px;
+                               font-size: 17px;
+                               background-color: #4C2683;
+                               background-image: linear-gradient(#4C2683, #E44298) !important;
+                               font-style: normal;
+                               font-weight: 700;
+                               color: #fff;
+                               border-radius: 5px;
+                               text-transform: uppercase;
+                               text-align: center;
+                               margin-bottom: 1em;">
+                        Check Mã Pin
+                    </h2>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px;">
+                    <label for="email">Email:</label>
+                </td>
+                <td style="padding: 10px;">
+                    <input type="email" class="form-control" id="Email" name="Email" required>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px;">
+                    <label for="pin">Pin:</label>
+                </td>
+                <td style="padding: 10px;">
+                    <input type="number" class="form-control" id="Pin" name="Pin" required>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center; padding: 10px;">
+                    <button type="submit" class="btn btn-primary">Kiểm tra</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center; padding: 10px;">
+                    <a href="@Url.Action("Login", "Access")" class="btn btn-warning btn-sm">Quay Lại</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

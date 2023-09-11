@@ -1,0 +1,240 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers*@
+<head>
+    <!-- thư viện thêm icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+@model List<DemoBaoCao.Models.Contracts>
+
+<h1 style="width: 100%;
+           padding: 6px;
+           font-size: 17px;
+           background-color: #4C2683;
+           background-image: linear-gradient(#4C2683, #E44298) !important;
+           font-style: normal;
+           font-weight: 700;
+           color: #fff;
+           border-radius: 5px;
+           text-transform: uppercase;
+           text-align: center;
+           margin-bottom: 1em;">
+    Danh Sách Hợp Đồng
+</h1>
+
+
+
+        <div class="container mt-5">
+            <form asp-action="AllContract" asp-controller="Contract" method="get">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="-Nhập Tên Khách Hàng, CCCD, Số Điện Thoại-" name="Value">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Số Hợp Đồng" name="ContractCode">
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary btn-block">Tìm kiếm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+<a href="AddContract" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i><span>Thêm</span></a>
+<table border="1" class="table table-hover">
+    <thead>
+        <tr style="border: 1px solid black;">
+            <th style="border: 1px solid black;">STT</th>
+            <th style="border: 1px solid black;">Số hợp đồng</th>
+            <th style="border: 1px solid black;">Mã Khách Hàng</th>
+            <th style="border: 1px solid black;">Tên Khách Hàng</th>
+            <th style="border: 1px solid black;">Sản phẩm</th>
+            <th style="border: 1px solid black;">Giá trị hợp đồng</th>
+            <th style="border: 1px solid black;">Số tiền đã rút</th>
+            <th style="border: 1px solid black;">Số tiền còn lại</th>
+            <th style="border: 1px solid black;">Ngày vay</th>
+            <th style="border: 1px solid black;">Số ngày</th>
+            <th style="border: 1px solid black;">Ngày hiệu lực</th>
+            <th style="border: 1px solid black;">Ngày tất toán</th>
+            <th style="border: 1px solid black;">Hành Động </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr style="border: 1px solid black;">
+                    <td style="border: 1px solid black;text-align: center;">@item.ContractId</td>
+                    <td style="border: 1px solid black;">@item.ContractCode</td>
+                    <td style="border: 1px solid black;">@item.ClientCode</td>
+                    <td style="border: 1px solid black;">@item.ClientName</td>
+                    <td style="border: 1px solid black;">@item.ProductName</td>
+                    <td style="border: 1px solid black;"> @string.Format("{0:N0}", @item.ContractValue)</td>
+                    <td style="border: 1px solid black;"> @string.Format("{0:N0}", @item.ContractAmountWithdrawn)</td>
+                    <td style="border: 1px solid black;"> @string.Format("{0:N0}", @item.ContractRemainingAmount)</td>
+                    <td style="border: 1px solid black;">@item.ContractBorrowedDate.ToString("dd/MM/yyyy")</td>
+                    <td style="border: 1px solid black;">@item.ContractNumberOfDays</td>
+                    <td style="border: 1px solid black;">@item.ContractEffectiveDate.ToString("dd/MM/yyyy")</td>
+                    <td style="border: 1px solid black;">@item.ContractPaymentDate.ToString("dd/MM/yyyy")</td>
+                    <td style="border: 1px solid black;text-align: center;">
+                        <a asp-controller="Contract" asp-action="EditContract" asp-route-Id="@item.ContractId" > <i class="fas fa-cog" style="color: black;"></i></a>
+                        <a asp-controller="Contract" asp-action="DeleteContract" asp-route-Id="@item.ContractId" > <i class="fas fa-trash" style="color: black;"></i></a>
+                        <button type="button" data-toggle="modal" data-target="#exampleModalCenter" data-id="@item.ContractId">
+                            <i class="fas fa-eye" style="color: black;"></i>
+                        </button>
+                        <button type="button" data-toggle="modal" data-target="#TotalMoneynew" data-id="@item.ContractId">
+                            <i class="fas fa-dollar-sign" style="color: black;"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+ @*Phân trang*@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            Page @(ViewBag.Page) of @ViewBag.TotalPages
+            @if (ViewBag.Page > 1)
+            {
+                <a asp-action="AllContract" asp-route-page="1" class="btn btn-secondary btn-sm">Trang đầu</a>
+                <a asp-action="AllContract" asp-route-page="@(ViewBag.Page - 1)" class="btn btn-secondary btn-sm">Quay lại</a>
+            }
+            @if (ViewBag.Page < ViewBag.TotalPages)
+            {
+                <a asp-action="AllContract" asp-route-page="@(ViewBag.Page + 1)" class="btn btn-secondary btn-sm">Trang tiếp</a>
+                <a asp-action="AllContract" asp-route-page="@ViewBag.TotalPages" class="btn btn-secondary btn-sm">Trang cuối</a>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+    @*đây là modal của hiện chi tiết hợp đồng*@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle" 
+                 style="width: 100%;
+                       padding: 6px;
+                       font-size: 17px;
+                       background-color: #4C2683;
+                       background-image: linear-gradient(#4C2683, #E44298) !important;
+                       font-style: normal;
+                       font-weight: 800;
+                       color: #fff;
+                       border-radius: 5px;
+                       text-transform: uppercase;
+                       text-align: center;
+                       margin-bottom: 1em;">
+                    Chi Tiết Hợp Đồng
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @*Tải nội dung cshtml*@
+                <p id="ChiTietHD111"></p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('button[data-id]').on('click', function () {
+        var Id = $(this).data('id');
+        ChiTietHD(Id);
+    });
+
+    function ChiTietHD(Id) {
+        // Gọi phương thức ChiTietHD để lấy dữ liệu từ phía server
+        // và hiển thị nội dung trong modal
+         $.ajax({
+             url: '/Contract/ChiTietHD/?Id=' + Id, // URL endpoint của phương thức ChiTietHD
+             type: 'GET',
+             success: function(data) {
+                $('#ChiTietHD111').html(data); // Hiển thị dữ liệu trong modal
+             },
+             error: function() {
+             }
+         });
+    }
+</script>
+
+
+
+
+
+  @*  modal dùng để hiện tiền lãi của khách hàng*@
+
+<!-- Modal -->
+<div class="modal fade" id="TotalMoneynew" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"
+                    style="width: 100%;
+                       padding: 6px;
+                       font-size: 17px;
+                       background-color: #4C2683;
+                       background-image: linear-gradient(#4C2683, #E44298) !important;
+                       font-style: normal;
+                       font-weight: 800;
+                       color: #fff;
+                       border-radius: 5px;
+                       text-transform: uppercase;
+                       text-align: center;
+                       margin-bottom: 1em;">
+                    Tiền Lãi
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="TotalMoney"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('button[data-id]').on('click', function () {
+        var Id = $(this).data('id');
+        GetTotalMoney(Id);
+    });
+
+    function GetTotalMoney(Id) {
+        // Gọi phương thức GetTotalMoney để lấy dữ liệu từ phía server
+        // và hiển thị nội dung trong modal
+        $.ajax({
+            url: '/Contract/GetTotalMoney/?Id=' + Id, // URL endpoint của phương thức GetTotalMoney
+            type: 'GET',
+            success: function (data) {
+                $('#TotalMoney').html(data); // Hiển thị dữ liệu trong modal
+            },
+            error: function () {
+            }
+        });
+    }
+</script>

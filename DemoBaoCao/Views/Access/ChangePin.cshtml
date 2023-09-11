@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model DemoBaoCao.Models.DemoLogin
+
+@if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+{
+    <div class="alert alert-danger">@ViewData["ErrorMessage"]</div>
+}
+
+@if (!string.IsNullOrEmpty(ViewData["ErrorMessage2"] as string))
+{
+    <div class="alert alert-danger">@ViewData["ErrorMessage2"]</div>
+}
+
+@if (!string.IsNullOrEmpty(ViewData["Message"] as string))
+{
+    <div class="alert alert-success">@ViewData["Message"]</div>
+    <script>
+        if (window.alert('Đổi mã Pin thành công, mời bạn đăng nhập lại')) { }
+        else { window.location = '/Access/LogOut'; }
+
+    </script>
+}
+
+<form asp-action="ChangePin" asp-controller="Access" method="post">
+    <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
+        <table style="width: 300px; border-collapse: collapse; border: 1px solid #ccc;">
+            <tr>
+                <td colspan="2" style="text-align: center; padding: 10px; background-color: #f8f9fa;">
+                    <h2 style="width: 100%;
+                               padding: 6px;
+                               font-size: 17px;
+                               background-color: #4C2683;
+                               background-image: linear-gradient(#4C2683, #E44298) !important;
+                               font-style: normal;
+                               font-weight: 700;
+                               color: #fff;
+                               border-radius: 5px;
+                               text-transform: uppercase;
+                               text-align: center;
+                               margin-bottom: 1em;">
+                        Đổi mã Pin
+                    </h2>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px;">
+                    <label for="Pin">Mã Pin hiện tại:</label>
+                </td>
+                <td style="padding: 10px;">
+                    <input type="number" class="form-control" id="Pin" name="Pin" required>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px;">
+                    <label for="NewPin">Mã Pin mới :</label>
+                </td>
+                <td style="padding: 10px;">
+                    <input type="number" class="form-control" id="NewPin" name="NewPin" required>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center; padding: 10px;">
+                    <button type="submit" class="btn btn-primary">Đổi mã Pin</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

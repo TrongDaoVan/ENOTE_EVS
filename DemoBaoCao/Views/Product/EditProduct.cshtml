@@ -1,0 +1,129 @@
+﻿@using System.Web
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model DemoBaoCao.Models.Products
+@{
+    ViewBag.Title = "EditProduct";
+}
+<h1 style="width: 100%;
+           padding: 6px;
+           font-size: 17px;
+           background-color: #4C2683;
+           background-image: linear-gradient(#4C2683, #E44298) !important;
+           font-style: normal;
+           font-weight: 700;
+           color: #fff;
+           border-radius: 5px;
+           text-transform: uppercase;
+           text-align: center;
+           margin-bottom: 1em;">
+    Sửa Thông Tin Sản Phẩm
+</h1>
+
+
+<div class="container">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <form asp-action="EditProduct" asp-controller="Product" method="post">
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductId,"Số Thứ Tự", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductName,"Tên sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductEffectiveDateFrom,"Ngày hiệu lực", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductEffectiveDateFrom, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductEffectiveDateFrom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductEffectiveDateTo,"Ngày kết thúc", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductEffectiveDateTo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductEffectiveDateTo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductMinimumSendingDate,"Ngày gửi tối thiểu", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductMinimumSendingDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductMinimumSendingDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductMaximumSendingDate,"Ngày gửi tối đa", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductMaximumSendingDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductMaximumSendingDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductPackageMinimumAmount,"Hạn mức tối thiểu", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductPackageMinimumAmount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductPackageMinimumAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductPackageMaximumAmount,"Tổng hạn mức", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductPackageMaximumAmount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductPackageMaximumAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductTotalRemainingLimit,"Hạn mức còn lại", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductTotalRemainingLimit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductTotalRemainingLimit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductNonTermRate,"Lãi xuất không kì hạn", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                    @Html.EditorFor(model => model.ProductNonTermRate, "{0:F2}", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductNonTermRate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-primary btn-sm" />
+            </div>
+        </div>
+    </form>
+
+}
+
+
+<a href="@Url.Action("AllProduct", "Product")" class="btn btn-warning btn-sm">Quay lại danh sách</a>
+
+</div>

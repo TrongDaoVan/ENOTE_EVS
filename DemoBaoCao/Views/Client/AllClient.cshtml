@@ -1,0 +1,141 @@
+﻿@using Azure.Core;
+@using Microsoft.AspNetCore.Http
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers*@
+<head>
+    <!-- thư viện thêm icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+@*    phân trang*@
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+@*    <link rel="stylesheet" href="~/css/jquery.dataTables.min.css">
+    <script src="~/js/Phantrang/jquery.dataTables.min.js"></script>
+    <script src="~/js/Phantrang/jquery-3.5.1.js"></script>*@
+
+
+    
+</head>
+@model List<DemoBaoCao.Models.Clients>
+@{
+    var currentPage = ViewBag.CurrentPage;
+    var totalPages = ViewBag.TotalPages;
+}
+
+<h1 style="width: 100%;
+           padding: 6px;
+           font-size: 17px;
+           background-color: #4C2683;
+           background-image: linear-gradient(#4C2683, #E44298) !important;
+           font-style: normal;
+           font-weight: 700;
+           color: #fff;
+           border-radius: 5px;
+           text-transform: uppercase;
+           text-align: center;
+           margin-bottom: 1em;">
+    Danh Sách Khách Hàng
+</h1>
+
+
+<div class="container mt-5">
+    <form asp-action="AllClient" asp-controller="Client" method="get">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Nhập tên khách hàng" name="ClientName">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Nhập số CMND" name="ClientIdNumber">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="ClientSMSNumber">
+            </div>
+            <div class="col">
+                <input type="number" class="form-control" placeholder="nhập số trang" name="Page">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary btn-block"x`>Tìm kiếm</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<a href="AddClient" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i><span>Thêm</span></a>
+<table id="example" border="1" class="table table-hover">
+    <thead>
+        <tr style="border: 1px solid black;">
+            <th style="border: 1px solid black;">STT</th>
+            <th style="border: 1px solid black;">Số Tài Khoản</th>
+            <th style="border: 1px solid black;">Họ Tên</th>
+            <th style="border: 1px solid black;">Địa Chỉ</th>
+            <th style="border: 1px solid black;">Số ĐKSH(cccd/cmnd)</th>
+            <th style="border: 1px solid black;">Nơi Cấp</th>
+            <th style="border: 1px solid black;">Ngày Cấp</th>
+            <th style="border: 1px solid black;">Số ĐT</th>
+            <th style="border: 1px solid black;">Email</th>
+            <th style="border: 1px solid black;">Chi Nhánh</th>
+            <th style="border: 1px solid black;">Hành Động </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr style="border: 1px solid black;">
+                    <td style="border: 1px solid black;text-align: center;">@item.ClientId</td>
+                    <td style="border: 1px solid black;">@item.ClientCode</td>
+                    <td style="border: 1px solid black;">@item.ClientName</td>
+                    <td style="border: 1px solid black;">@item.ClientAddress</td>
+                    <td style="border: 1px solid black;">@item.ClientIdNumber</td>
+                    <td style="border: 1px solid black;">@item.CientIdLssuePlace</td>
+                    <td style="border: 1px solid black;">@item.ClientIDLssueDate.ToString("dd/MM/yyyy")</td>
+                    <td style="border: 1px solid black;">@item.ClientSMSNumber</td>
+                    <td style="border: 1px solid black;">@item.ClientEmail</td>
+                    <td style="border: 1px solid black;">@item.ClientBranch</td>
+                    <td style="border: 1px solid black;text-align: center;">
+                        <a asp-controller="Client" asp-action="EditClient" asp-route-Id="@item.ClientId"> <i class="fas fa-cog" style="color: black;"></i></a>
+                        <a asp-controller="Client" asp-action="DeleteClient" asp-route-Id="@item.ClientId"> <i class="fas fa-trash" style="color: black;"></i></a>
+                        <a asp-controller="Contract" asp-action="AllContract" asp-route-Value="@item.ClientIdNumber">Hợp đồng</a>
+                        <a asp-controller="Contract" asp-action="AddContract" asp-route-ClientId="@item.ClientId">Tạo HD</a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+
+
+@*thẻ diev là phân trang*@
+@*<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            Page @(ViewBag.Page) of @ViewBag.TotalPages
+            @if (ViewBag.Page > 1)
+            {
+                <a asp-action="AllClient" asp-route-page="1" class="btn btn-secondary btn-sm">Trang đầu</a>
+                <a asp-action="AllClient" asp-route-page="@(ViewBag.Page - 1)" class="btn btn-secondary btn-sm">Quay lại</a>
+            }
+            @if (ViewBag.Page < ViewBag.TotalPages)
+            {
+                <a asp-action="AllClient" asp-route-page="@(ViewBag.Page + 1)" class="btn btn-secondary btn-sm">Trang tiếp</a>
+                <a asp-action="AllClient" asp-route-page="@ViewBag.TotalPages" class="btn btn-secondary btn-sm">Trang cuối</a>
+            }
+        </div>
+    </div>
+</div>
+*@
+
+
